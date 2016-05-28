@@ -48,7 +48,7 @@ def printPostCode(firstPre, firstPost, secondPre, secondPost):
         if first == second:
             break
         pass
-    
+
 
 def main():
     try:
@@ -61,9 +61,6 @@ def main():
         printPostCode(int(f), int(s), int(f2), int(s2))
     except SyntaxError:
         print "First post Code is bigger"
-    else:
-        print "Something gone wrong"
-
 
 if __name__ == "__main__":
     main()
