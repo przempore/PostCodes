@@ -24,6 +24,9 @@ class PostCode:
     def __add__(self, other):
         tmp = PostCode(0, 0)
         tmp.preCode = self.preCode + other.preCode
+        if tmp.preCode >= 99:
+            tmp.preCode = 0
+
         tmp.postCode = self.postCode + other.postCode
         if tmp.postCode >= 1000:
             tmp.preCode += 1
@@ -37,9 +40,6 @@ class PostCode:
 def printPostCode(firstPre, firstPost, secondPre, secondPost):
     first = PostCode(firstPre, firstPost)
     second = PostCode(secondPre, secondPost)
-
-    if first > second:
-        raise SyntaxError
 
     first.Print()
     while(True):
@@ -57,10 +57,7 @@ def main():
     except ValueError:
         print "Wrong input data"
 
-    try:
-        printPostCode(int(f), int(s), int(f2), int(s2))
-    except SyntaxError:
-        print "First post Code is bigger"
+    printPostCode(int(f), int(s), int(f2), int(s2))
 
 if __name__ == "__main__":
     main()
