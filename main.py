@@ -23,14 +23,16 @@ class PostCode:
 
     def __add__(self, other):
         tmp = PostCode(0, 0)
-        tmp.preCode = self.preCode + other.preCode
-        if tmp.preCode >= 99:
-            tmp.preCode = 0
 
         tmp.postCode = self.postCode + other.postCode
         if tmp.postCode >= 1000:
             tmp.preCode += 1
-            tmp.postCode -= 1000
+            tmp.postCode = 0
+
+        tmp.preCode += self.preCode + other.preCode
+        if tmp.preCode >= 100:
+            tmp.preCode = 0
+
         return tmp
 
     def Print(self):
